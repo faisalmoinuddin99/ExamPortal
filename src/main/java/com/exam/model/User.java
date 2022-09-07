@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,23 +18,35 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
     private Long id ;
 
     private String username ;
+
+    @Column(nullable = false, length = 64)
     private String password ;
+    @Column(name = "first_name", nullable = false, length = 20)
     private String firstName ;
+
+   @Column(name = "last_name", nullable = false, length = 20)
     private String lastName ;
+
+    @Column(nullable = false, unique = true, length = 45)
     private String email ;
     private String phone ;
     private String profile ;
 
     @Column(columnDefinition = "boolean default true")
-    private boolean enable  ;
+    private boolean enable  = true;
 
-    // user many roles
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-    @JsonIgnore
-    private Set<UserRole> userRoles = new HashSet<>() ;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+
 }
