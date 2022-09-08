@@ -18,6 +18,7 @@
                     [(ngModel)]="user.username"
                     name="username"
                     matInput placeholder="Enter username here..."
+                    required
                     />
                     <mat-hint>User name must be unique !!</mat-hint>
                   </mat-form-field>
@@ -25,11 +26,12 @@
                   <!-- password field -->
 
                   <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Password*</mat-label>
+                    <mat-label>Password</mat-label>
                     <input type="password" 
                     name="password"
                     [(ngModel)] = "user.password"
                     matInput placeholder="Enter password here..."
+                    required
                     />
                     <!-- <mat-hint>Hint</mat-hint> -->
                   </mat-form-field>
@@ -38,11 +40,12 @@
                   <!-- firstName -->
 
                   <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>FirstName*</mat-label>
+                    <mat-label>FirstName</mat-label>
                     <input
                     name="firstname"
                     [(ngModel)] = "user.firstName"
                      matInput placeholder="Enter firstName here..."
+                     required
                      />
                     <!-- <mat-hint>Hint</mat-hint> -->
                   </mat-form-field>
@@ -51,12 +54,13 @@
                   <!-- lastName -->
 
                   <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>LastName*</mat-label>
+                    <mat-label>LastName</mat-label>
                     <input 
                     
                     matInput placeholder="Enter lastName here..."
                     name="lastName"
                     [(ngModel)]="user.lastName"
+                    required
                      />
                     <!-- <mat-hint>Hint</mat-hint> -->
                   </mat-form-field>
@@ -64,11 +68,12 @@
                   <!-- email -->
 
                   <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Email*</mat-label>
+                    <mat-label>Email</mat-label>
                     <input 
                     name="email"
                     [(ngModel)]="user.email"
                     matInput placeholder="Enter email here..."
+                    required
                     
                     />
                     <!-- <mat-hint>Hint</mat-hint> -->
@@ -81,6 +86,7 @@
                     name="phone"
                     [(ngModel)]="user.phone"
                     matInput placeholder="Enter phone no here..."
+                    required
                     />
                     <!-- <mat-hint>Hint</mat-hint> -->
                   </mat-form-field>
