@@ -3,7 +3,6 @@ package com.exam.controller;
 import com.exam.model.Role;
 import com.exam.model.User;
 import com.exam.service.UserService;
-import com.exam.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
@@ -22,6 +22,8 @@ public class UserController {
     // create user
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
+
+        user.setProfile("default.png");
         Set<Role> roles = new HashSet<>() ;
 
         Role role = new Role() ;
@@ -34,7 +36,7 @@ public class UserController {
     }
 
     // get all user details
-    @GetMapping("/")
+    @GetMapping("/user")
     public List<User> getAllUser(){
         return userService.getUsers() ;
     }
