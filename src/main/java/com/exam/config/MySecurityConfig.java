@@ -43,9 +43,14 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
+    @Bean
+    public BCryptPasswordEncoder encryptPassword(){
+        return new BCryptPasswordEncoder() ;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.userDetailsService(this.userDetailsServiceImpl).passwordEncoder(passwordEncoder()) ;
+       auth.userDetailsService(this.userDetailsServiceImpl).passwordEncoder(encryptPassword()) ;
     }
 
     @Override

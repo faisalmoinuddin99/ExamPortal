@@ -59,7 +59,7 @@ public class User implements UserDetails {
         this.roles.forEach(userRole -> {
             authorities.add(new Authority(userRole.getRoleName())) ;
         });
-        return authorities;
+        return authorities; 
     }
 
     @Override
